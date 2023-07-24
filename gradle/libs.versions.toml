@@ -15,6 +15,7 @@ ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
+material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -30,7 +31,7 @@ androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 [bundles]
-compose = ["ui", "ui-graphics", "ui-tooling-preview", "material3"]
-debug = ["ui-tooling", "ui-test-manifest"]
-androidTest = ["androidx-test-ext-junit", "espresso-core", "ui-test-junit4"]
+compose = ["ui", "ui-graphics", "ui-tooling-preview", "material3", "material-icons-extended"]
 otherCompose = ["lifecycle-runtime-ktx", "activity-compose"]
+androidTest = ["androidx-test-ext-junit", "espresso-core", "ui-test-junit4"]
+debug = ["ui-tooling", "ui-test-manifest"]
