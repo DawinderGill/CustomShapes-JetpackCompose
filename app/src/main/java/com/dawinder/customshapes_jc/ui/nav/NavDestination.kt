@@ -8,6 +8,9 @@ import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
 
+/**
+ * Interface representing a navigation destination used to define the properties of a screen.
+ */
 interface NavDestination {
     val icon: ImageVector
     val route: String
@@ -38,4 +41,7 @@ object Diamond : NavDestination {
     override val route = "diamond"
 }
 
+/**
+ * List of [NavDestination] objects representing the screens available for navigation in the app.
+ */
 val tabRowScreens = listOf(Hexagon, Star, Heart, Ticket, Diamond)

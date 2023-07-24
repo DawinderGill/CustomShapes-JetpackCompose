@@ -17,13 +17,16 @@ import androidx.compose.ui.unit.dp
 import com.dawinder.customshapes_jc.models.Images
 import com.dawinder.customshapes_jc.ui.composables.ItemImage
 import com.dawinder.customshapes_jc.ui.shapes.TicketShape
-import com.dawinder.customshapes_jc.ui.theme.md_theme_light_primary
+import com.dawinder.customshapes_jc.ui.theme.md_theme_light_inversePrimary
 
+/**
+ * Composable function to display a list of tickets with images.
+ *
+ * @param images The list of [Images] representing ticket images to be displayed.
+ */
 @Composable
 fun TicketScreen(images: List<Images>) {
-    LazyColumn(
-        contentPadding = PaddingValues(all = 16.dp)
-    ) {
+    LazyColumn(contentPadding = PaddingValues(all = 16.dp)) {
         items(images) {
             Ticket(
                 modifier = Modifier
@@ -35,12 +38,18 @@ fun TicketScreen(images: List<Images>) {
     }
 }
 
+/**
+ * Composable function to display a ticket with an image.
+ *
+ * @param modifier The optional [Modifier] to apply custom styling to the ticket.
+ * @param url The URL of the image to be displayed in the ticket.
+ */
 @Composable
 fun Ticket(modifier: Modifier = Modifier, url: String) {
     Box(
         modifier = modifier
             .clip(TicketShape())
-            .background(md_theme_light_primary),
+            .background(md_theme_light_inversePrimary),
         contentAlignment = Alignment.Center
     ) {
         ItemImage(url = url)

@@ -12,15 +12,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dawinder.customshapes_jc.models.Images
 import com.dawinder.customshapes_jc.ui.composables.ItemImage
 import com.dawinder.customshapes_jc.ui.shapes.HexagonShape
-import com.dawinder.customshapes_jc.ui.theme.md_theme_light_primary
-import com.dawinder.customshapes_jc.viewmodel.SharedViewModel
+import com.dawinder.customshapes_jc.ui.theme.md_theme_light_inversePrimary
 
+/**
+ * Composable function to display a grid of hexagons with images.
+ *
+ * @param images The list of [Images] representing hexagon images to be displayed.
+ */
 @Composable
 fun HexagonScreen(images: List<Images>) {
     val gridColumns = 3
@@ -28,19 +30,25 @@ fun HexagonScreen(images: List<Images>) {
     val itemWidth = (screenWidth / gridColumns).coerceAtMost(200.dp)
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(gridColumns), // Adjust the number of columns as per your preference
+        columns = GridCells.Fixed(gridColumns),
         contentPadding = PaddingValues(all = 8.dp)
     ) {
         items(images) { Hexagon(modifier = Modifier.size(itemWidth), it.url) }
     }
 }
 
+/**
+ * Composable function to display a hexagon with an image.
+ *
+ * @param modifier The optional [Modifier] to apply custom styling to the hexagon.
+ * @param url The URL of the image to be displayed in the hexagon.
+ */
 @Composable
 fun Hexagon(modifier: Modifier = Modifier, url: String) {
     Box(
         modifier = modifier
             .clip(HexagonShape())
-            .background(md_theme_light_primary),
+            .background(md_theme_light_inversePrimary),
         contentAlignment = Alignment.Center
     ) {
         ItemImage(url = url)

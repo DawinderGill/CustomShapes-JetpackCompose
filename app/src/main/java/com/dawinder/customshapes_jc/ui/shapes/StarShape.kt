@@ -11,7 +11,25 @@ import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
+/**
+ * Custom [Shape] implementation representing the shape of a star.
+ *
+ * The star shape is created using a [Path] with lines connecting the points of a star based
+ * on the provided [numPoints] and [innerRadius].
+ *
+ * @param numPoints The number of points in the star. A higher value creates a more complex star shape.
+ * @param innerRadius The inner radius of the star. A smaller value creates a more elongated star shape.
+ */
 class StarShape : Shape {
+
+    /**
+     * Creates the [Outline] for the star shape.
+     *
+     * @param size The [Size] of the shape.
+     * @param layoutDirection The [LayoutDirection] of the shape.
+     * @param density The [Density] of the shape.
+     * @return The [Outline] representing the star shape.
+     */
     override fun createOutline(
         size: Size,
         layoutDirection: LayoutDirection,
@@ -23,6 +41,12 @@ class StarShape : Shape {
     }
 }
 
+/**
+ * Draws the path for the star shape.
+ *
+ * @param size The [Size] of the shape.
+ * @return The [Path] representing the star shape.
+ */
 private fun drawStarPath(size: Size): Path {
     return Path().apply {
         val numPoints = 5
@@ -36,21 +60,21 @@ private fun drawStarPath(size: Size): Path {
 
         var angle = -PI / 2f // Start angle at the top point of the star
         moveTo(
-            (centerX + outerRadius * cos(angle)).toFloat(),
-            (centerY + outerRadius * sin(angle)).toFloat()
+            x = (centerX + outerRadius * cos(angle)).toFloat(),
+            y = (centerY + outerRadius * sin(angle)).toFloat()
         )
 
         // Draw the points of the star in the correct sequence
         for (i in 1..numPoints) {
             angle += angleIncrement / 2 // Move to the inner angle first
             lineTo(
-                (centerX + innerRadius * cos(angle)).toFloat(),
-                (centerY + innerRadius * sin(angle)).toFloat()
+                x = (centerX + innerRadius * cos(angle)).toFloat(),
+                y = (centerY + innerRadius * sin(angle)).toFloat()
             )
             angle += angleIncrement / 2 // Move to the outer angle
             lineTo(
-                (centerX + outerRadius * cos(angle)).toFloat(),
-                (centerY + outerRadius * sin(angle)).toFloat()
+                x = (centerX + outerRadius * cos(angle)).toFloat(),
+                y = (centerY + outerRadius * sin(angle)).toFloat()
             )
         }
 
