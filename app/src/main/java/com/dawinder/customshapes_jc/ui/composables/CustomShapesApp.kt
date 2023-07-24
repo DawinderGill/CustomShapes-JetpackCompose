@@ -24,16 +24,23 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
+import com.dawinder.customshapes_jc.R
+import com.dawinder.customshapes_jc.models.Images
 import com.dawinder.customshapes_jc.ui.composables.tabs.DiamondScreen
 import com.dawinder.customshapes_jc.ui.composables.tabs.HeartScreen
 import com.dawinder.customshapes_jc.ui.composables.tabs.HexagonScreen
@@ -47,10 +54,14 @@ import com.dawinder.customshapes_jc.ui.nav.Star
 import com.dawinder.customshapes_jc.ui.nav.Ticket
 import com.dawinder.customshapes_jc.ui.nav.tabRowScreens
 import com.dawinder.customshapes_jc.ui.theme.md_theme_light_primary
+import com.dawinder.customshapes_jc.viewmodel.SharedViewModel
 import java.util.Locale
 
 @Composable
 fun CustomShapesApp() {
+    val viewModel: SharedViewModel = viewModel()
+    val images = viewModel.images
+
     val navController = rememberNavController()
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentDestination = currentBackStack?.destination
@@ -67,7 +78,11 @@ fun CustomShapesApp() {
             )
         }
     ) { innerPadding ->
-        NavHost(navController = navController, modifier = Modifier.padding(innerPadding))
+        NavHost(
+            navController = navController,
+            modifier = Modifier.padding(innerPadding),
+            images = images
+        )
     }
 }
 
@@ -151,19 +166,30 @@ fun TabContent(
 @Composable
 fun NavHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    images: List<Images>
 ) {
     NavHost(
         navController = navController,
         startDestination = Hexagon.route,
         modifier = modifier
     ) {
-        composable(route = Hexagon.route) { HexagonScreen() }
-        composable(route = Star.route) { StarScreen() }
-        composable(route = Heart.route) { HeartScreen() }
-        composable(route = Ticket.route) { TicketScreen() }
-        composable(route = Diamond.route) { DiamondScreen() }
+        composable(route = Hexagon.route) { HexagonScreen(images) }
+        composable(route = Star.route) { StarScreen(images) }
+        composable(route = Heart.route) { HeartScreen(images) }
+        composable(route = Ticket.route) { TicketScreen(images) }
+        composable(route = Diamond.route) { DiamondScreen(images) }
     }
+}
+
+@OptIn(ExperimentalGlideComposeApi::class)
+@Composable
+fun ItemImage(url: String) {
+    GlideImage(
+        model = url,
+        contentScale = ContentScale.Crop,
+        contentDescription = stringResource(id = R.string.item_image)
+    )
 }
 
 fun NavHostController.navigateSingleTopTo(route: String) =
