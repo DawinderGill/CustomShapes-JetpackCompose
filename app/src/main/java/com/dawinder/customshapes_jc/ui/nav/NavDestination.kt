@@ -1,6 +1,8 @@
 package com.dawinder.customshapes_jc.ui.nav
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AirplaneTicket
+import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material.icons.filled.HeartBroken
 import androidx.compose.material.icons.filled.Hexagon
 import androidx.compose.material.icons.filled.Star
@@ -26,4 +28,14 @@ object Heart : NavDestination {
     override val route = "heart"
 }
 
-val tabRowScreens = listOf(Hexagon, Star, Heart)
+object Ticket : NavDestination {
+    override val icon = Icons.Filled.AirplaneTicket
+    override val route = "ticket"
+}
+
+object Diamond : NavDestination {
+    override val icon = Icons.Filled.Diamond
+    override val route = "diamond"
+}
+
+val tabRowScreens = listOf(Hexagon, Star, Heart, Ticket, Diamond)

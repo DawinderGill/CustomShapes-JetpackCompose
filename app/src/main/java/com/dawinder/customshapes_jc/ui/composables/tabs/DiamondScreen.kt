@@ -2,7 +2,9 @@ package com.dawinder.customshapes_jc.ui.composables.tabs
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -14,13 +16,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.dawinder.customshapes_jc.ui.shapes.HeartShape
-import com.dawinder.customshapes_jc.ui.shapes.HexagonShape
+import com.dawinder.customshapes_jc.ui.shapes.DiamondShape
 import com.dawinder.customshapes_jc.ui.theme.md_theme_light_primary
 
 @Preview
 @Composable
-fun HeartScreen() {
+fun DiamondScreen() {
     val gridColumns = 3
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val itemWidth = (screenWidth / gridColumns).coerceAtMost(200.dp)
@@ -30,19 +31,21 @@ fun HeartScreen() {
         contentPadding = PaddingValues(all = 8.dp)
     ) {
         items(20) {
-            Heart(modifier = Modifier.size(itemWidth))
+            Diamond(modifier = Modifier.size(itemWidth))
         }
     }
 }
 
 @Composable
-fun Heart(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .clip(HeartShape())
-            .background(md_theme_light_primary),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(text = "")
+fun Diamond(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(all = 8.dp)) {
+        Box(
+            modifier = modifier
+                .clip(DiamondShape())
+                .background(md_theme_light_primary),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(text = "")
+        }
     }
 }

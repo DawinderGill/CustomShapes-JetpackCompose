@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -35,13 +34,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.dawinder.customshapes_jc.ui.composables.tabs.DiamondScreen
 import com.dawinder.customshapes_jc.ui.composables.tabs.HeartScreen
 import com.dawinder.customshapes_jc.ui.composables.tabs.HexagonScreen
 import com.dawinder.customshapes_jc.ui.composables.tabs.StarScreen
+import com.dawinder.customshapes_jc.ui.composables.tabs.TicketScreen
+import com.dawinder.customshapes_jc.ui.nav.Diamond
 import com.dawinder.customshapes_jc.ui.nav.Heart
 import com.dawinder.customshapes_jc.ui.nav.Hexagon
 import com.dawinder.customshapes_jc.ui.nav.NavDestination
 import com.dawinder.customshapes_jc.ui.nav.Star
+import com.dawinder.customshapes_jc.ui.nav.Ticket
 import com.dawinder.customshapes_jc.ui.nav.tabRowScreens
 import com.dawinder.customshapes_jc.ui.theme.md_theme_light_primary
 import java.util.Locale
@@ -158,6 +161,8 @@ fun NavHost(
         composable(route = Hexagon.route) { HexagonScreen() }
         composable(route = Star.route) { StarScreen() }
         composable(route = Heart.route) { HeartScreen() }
+        composable(route = Ticket.route) { TicketScreen() }
+        composable(route = Diamond.route) { DiamondScreen() }
     }
 }
 
