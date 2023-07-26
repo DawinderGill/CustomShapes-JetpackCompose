@@ -300,7 +300,7 @@ fun Hexagon(modifier: Modifier = Modifier) {
             .background(md_theme_light_inversePrimary),
         contentAlignment = Alignment.Center
     ) {
-        
+        // Your content here
     }
 }
 ```
