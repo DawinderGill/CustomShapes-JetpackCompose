@@ -14,6 +14,8 @@ Welcome to `Custom Shapes` - [Jetpack Compose](https://www.googleadservices.com/
 
 Whether you are a beginner or an experienced Compose developer, this project offers a variety of pre-built shapes that can be utilized to enhance your app's user interface with creative and engaging designs.
 
+You can read the step-by-step guide in my [medium](https://medium.com/@dawinderapps/mastering-custom-shapes-a-guide-to-crafting-unique-ui-in-jetpack-compose-28808b3facbe) story.
+
 ## 🕹️ Features
 
 **Hexagon:** Create hexagonal shapes with rounded corners and adjust the size according to your screen's dimensions.
